@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Receipt Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #1a237e; color: #333; margin: 0; padding: 0; }
+    nav { background-color: #0f172a; padding: 15px; text-align: right; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: bold; }
+    .container { max-width: 450px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; }
+    h2 { text-align: center; color: #1a237e; margin-top: 0; }
+    .menu-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    button { background-color: #6366f1; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 6px; width: 100%; margin-top: 15px; cursor: pointer; }
+    .receipt-box { margin-top: 20px; padding: 15px; background: #f3f4f6; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">SKU Generator</a>
+    <a href="receipt.html">Receipt Generator</a>
+  </nav>
+
+  <div class="container">
+    <h2>Menu</h2>
+    
+    <div class="menu-item">
+      <label><input type="checkbox" id="item1" value="99"> Americano</label>
+      <span>₱99</span>
+    </div>
+    <div class="menu-item">
+      <label><input type="checkbox" id="item2" value="129"> Spanish Latte</label>
+      <span>₱129</span>
+    </div>
+    <div class="menu-item">
+      <label><input type="checkbox" id="item3" value="139"> Cold Brew Malt</label>
+      <span>₱139</span>
+    </div>
+
+    <button onclick="calculateTotal()">Create Order</button>
+
+    <div class="receipt-box" id="receiptDisplay">
+      Your order summary will appear here.
+    </div>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      let total = 0;
+      const items = [
+        { id: 'item1', name: 'Americano' },
+        { id: 'item2', name: 'Spanish Latte' },
+        { id: 'item3', name: 'Cold Brew Malt' }
+      ];
+
+      let summary = "<strong>Order Summary:</strong><br>";
+
+      items.forEach(item => {
+        const checkbox = document.getElementById(item.id);
+        if (checkbox.checked) {
+          const price = parseFloat(checkbox.value);
+          total += price;
+          summary += `${item.name} - ₱${price}<br>`;
+        }
+      });
+
+      if (total === 0) {
+        document.getElementById('receiptDisplay').innerHTML = "Please select at least one item.";
+      } else {
+        summary += `<hr><strong>Total: ₱${total}</strong>`;
+        document.getElementById('receiptDisplay').innerHTML = summary;
+      }
+    }
+  </script>
+
+</body>
+</html>
