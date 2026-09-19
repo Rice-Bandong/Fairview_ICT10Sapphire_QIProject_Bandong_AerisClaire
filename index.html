@@ -12,39 +12,58 @@
       font-family: 'Zen Maru Gothic', 'Shippori Mincho', serif;
       background: linear-gradient(
         45deg,
-        #82c3ec 0%,        
-        #a0d2eb 25%,
-        #b2e2f2 50%,
-        #d0f4de 75%,
-        #8ec5fc 100%
+        #70e2b8 0%,        
+        #81e6d9 25%,
+        #a8e6cf 50%,
+        #98ddca 75%,
+        #5cdb95 100%
       );
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease-in-out infinite;
+      background-image: url('https://i.pinimg.com/originals/82/4d/b1/824db152cde0fe8c3654c209a126882c.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: gradientBG 17s ease-in-out infinite;
       min-height: 100vh;
-      color: #1a3c54;
+      color: #0c3b2e;
       background-attachment: fixed;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       padding: 20px;
       position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Soft Blur Overlay over Background GIF */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 0;
+      pointer-events: none;
     }
 
     body::before {
-      content: "✦ ✨ ♬ ✧ ✨ ♫ ✦ ✨ ✧ ♬ ✦";
+      content: "✦ 🍰 ♬ ✧ 🌸 ♫ ✦ 🍓 ✧ ♬ ✦";
       position: absolute;
       top: 5%;
       left: 5%;
       right: 5%;
       bottom: 5%;
-      opacity: 0.25;
-      font-size: 24px;
+      opacity: 0.30;
+      font-size: 30px;
       color: #ffffff;
       word-spacing: 40px;
       line-height: 80px;
       pointer-events: none;
-      text-shadow: 0 0 10px #ffffff, 0 0 18px #a0d2eb;
+      text-shadow: 0 0 10px #ffffff, 0 0 18px #ffc0cb;
+      z-index: 1;
     }
 
     @keyframes gradientBG {
@@ -53,74 +72,102 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Header Styling (Mint Green Tint) */
+    header {
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      margin-top: 10px;
+      z-index: 10;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(168, 230, 207, 0.55);
+      color: #082920;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 15px rgba(92, 219, 149, 0.35);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+    }
+
+    /* Navigation Styling (Mixed Green & Pink Gradient Buttons) */
     nav {
-      position: absolute;
-      top: 20px;
+      margin-top: 15px;
       display: flex;
+      justify-content: center;
       gap: 15px;
       z-index: 10;
     }
 
     .nav-btn {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.55);
-      color: #1a3c54 !important;
+      background: rgba(255, 222, 233, 0.55);
+      color: #4a1525 !important;
       font-weight: 700;
       padding: 8px 22px;
       border-radius: 999px;
       text-decoration: none;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       transition: all 0.3s ease;
       font-size: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.75);
     }
 
     .nav-btn:hover, .nav-btn.active {
-      background: linear-gradient(135deg, #a0d2eb, #e0f2fe, #b2e2f2);
-      color: #102a3a !important;
-      box-shadow: 0 0 15px rgba(160, 210, 235, 0.7);
+      background: linear-gradient(135deg, #a8e6cf, #ffc0cb, #f4b6c2);
+      color: #2b0c16 !important;
+      box-shadow: 0 0 15px rgba(255, 192, 203, 0.8);
       transform: scale(1.05);
+      border-color: rgba(255, 255, 255, 0.95);
     }
 
+    /* Glass Container Structure (Pink Tint) */
     .light-box {
-      margin: 60px auto 20px;
+      margin: 30px auto;
       padding: 35px 30px;
       width: 100%;
       max-width: 450px;
-      background: rgba(224, 242, 254, 0.45);
-      backdrop-filter: blur(20px) saturate(160%);
-      -webkit-backdrop-filter: blur(20px) saturate(160%);  
+      background: rgba(255, 222, 233, 0.40);
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);  
       border-radius: 30px;
-      border: 2px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 20px 40px rgba(130, 195, 236, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.6);  
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 40px rgba(244, 182, 194, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.6);  
       animation: glowPulse 3s ease-in-out infinite;
       text-align: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     @keyframes glowPulse {
       0%, 100% {
         transform: translateY(0);
-        box-shadow: 0 0 12px rgba(160, 210, 235, 0.3), 0 0 22px rgba(130, 195, 236, 0.4);
+        box-shadow: 0 0 12px rgba(255, 192, 203, 0.45), 0 0 22px rgba(168, 230, 207, 0.45);
       }
       50% {
         transform: translateY(-8px);
-        box-shadow: 0 0 15px rgba(160, 210, 235, 0.45), 0 0 28px rgba(130, 195, 236, 0.55);
+        box-shadow: 0 0 15px rgba(255, 192, 203, 0.65), 0 0 28px rgba(168, 230, 207, 0.65);
       }
     }
 
     h1 {
       font-family: 'Shippori Mincho', serif;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #102a3a;
+      color: #2b0c16;
       margin-bottom: 25px;
       display: inline-block;
-      background: linear-gradient(135deg, #a0d2eb, #e0f2fe, #b2e2f2);
+      background: linear-gradient(135deg, #a8e6cf, #ffe5ec, #ffc0cb);
       padding: 8px 22px;
       border-radius: 18px;
-      box-shadow: 0 3px 10px rgba(130, 195, 236, 0.4);
+      box-shadow: 0 3px 10px rgba(244, 182, 194, 0.5);
     }
 
     .form-group {
@@ -131,7 +178,7 @@
     label {
       font-weight: 700;
       font-size: 0.9rem;
-      color: #1a3c54;
+      color: #3d1421;
       margin-bottom: 5px;
       display: block;
     }
@@ -141,64 +188,108 @@
       padding: 10px 14px;
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.9);
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(5px);
       font-family: inherit;
-      color: #1a3c54;
+      color: #3d1421;
       outline: none;
       transition: all 0.3s ease;
     }
 
     input:focus, select:focus {
-      background: rgba(255, 255, 255, 0.95);
-      border-color: #82c3ec;
-      box-shadow: 0 0 10px rgba(130, 195, 236, 0.5);
+      background: rgba(255, 255, 255, 0.98);
+      border-color: #ffc0cb;
+      box-shadow: 0 0 10px rgba(255, 192, 203, 0.7);
     }
 
     .btn-gradient {
       width: 100%;
       margin-top: 15px;
-      background: linear-gradient(135deg, #a0d2eb, #e0f2fe, #b2e2f2);
-      color: #102a3a;
+      background: linear-gradient(135deg, #a8e6cf, #ffe5ec, #ffc0cb);
+      color: #2b0c16;
       padding: 12px;
       border-radius: 15px;
       font-size: 1rem;
       font-weight: 700;
       border: none;
-      box-shadow: 0 3px 10px rgba(130, 195, 236, 0.4);
+      box-shadow: 0 3px 10px rgba(244, 182, 194, 0.5);
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .btn-gradient:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 15px rgba(130, 195, 236, 0.7);
+      box-shadow: 0 0 15px rgba(255, 192, 203, 0.85);
     }
 
     #result {
       margin-top: 20px;
       padding: 12px;
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 15px;
       font-weight: 700;
-      color: #102a3a;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      color: #2b0c16;
+      border: 1px solid rgba(255, 255, 255, 0.9);
       min-height: 48px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+
+    /* Footer Styling (Mint Green Tint) */
+    footer {
+      width: 100%;
+      max-width: 500px;
+      padding: 15px;
+      text-align: center;
+      background: rgba(168, 230, 207, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px rgba(92, 219, 149, 0.3);
+      z-index: 10;
+      margin-top: 10px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #0c3b2e;
+    }
+
+    .footer-sub {
+      font-size: 0.75rem;
+      opacity: 0.85;
+      margin-top: 3px;
+    }
+
+    .footer-sub2 {
+      font-size: 0.60rem;
+      opacity: 0.85;
+      margin-top: 3px;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-btn active">SKU Generator</a>
-    <a href="receipt.html" class="nav-btn">Receipt Generator</a>
-  </nav>
+  <!-- Header -->
+  <header>
+    <div class="header-badge">
+    ༺𓆩OBMC ICT Project ❀ Q1 Fair𓆪༻
+    </div>
+    <nav>
+      <a href="index.html" class="nav-btn active">｡𖦹°SKU Generator.಄</a>
+      <a href="receipt.html" class="nav-btn">｡𖦹°Receipt Generator.಄</a>
+    </nav>
+  </header>
 
+  <!-- Main Generator Card -->
   <div class="light-box">
     <h1>✦ SKU Generator ✦</h1>
+    <h4 style="font-family: 'Shippori Mincho', serif; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; color: #3f7c42;">𐙚 Generate SKUs for our/your products here! 𐙚</h4>
 
     <div class="form-group">
       <label for="category">Category:</label>
@@ -211,7 +302,7 @@
 
     <div class="form-group">
       <label for="productName">Product Name:</label>
-      <input type="text" id="productName" placeholder="e.g. Bottled Water">
+      <input type="text" id="productName" placeholder="e.g. Taiyaki">
     </div>
 
     <div class="form-group">
@@ -219,10 +310,18 @@
       <input type="number" id="stockQty" placeholder="e.g. 50">
     </div>
 
-    <button class="btn-gradient" onclick="generateSKU()">Generate SKU</button>
+    <button class="btn-gradient" onclick="generateSKU()">ᨳGenerate SKUଓ</button>
 
-    <div id="result">Note: The Generated SKU will appear here‼️</div>
+    <div id="result">
+      <span style="opacity: 0.75; font-weight: 500;">ᨳNote: The Generated SKU will appear here‼️ଓ</span>
+    </div>
   </div>
+
+  <footer>
+    <p>Aeris Claire D. Bandong | Q1 Project</p>
+    <p class="footer-sub">Grade 10 SAPPHIRE | ICT Quarter 1</p>
+    <p class="footer-sub2">Sources: [Bootstrap, Google Fonts, Pinterest, Q4 ICT Project SY 2025-2026]</p>
+  </footer>
 
   <script>
     function generateSKU() {
