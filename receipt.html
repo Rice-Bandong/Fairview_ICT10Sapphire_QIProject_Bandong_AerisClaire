@@ -291,11 +291,11 @@
     <div class="form-group">
       <label>Menu:</label>
       <div style="background: rgba(255, 255, 255, 0.65); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.9);">
-        <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" id="redVelvet" data-price="120" style="width: auto; display: inline-block; margin-right: 8px;"> Japanese strawberry shortcake🍰</label>
-        <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" id="blueberry" data-price="150" style="width: auto; display: inline-block; margin-right: 8px;"> Daifuku🍡</label>
-        <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" id="carrot" data-price="160" style="width: auto; display: inline-block; margin-right: 8px;"> Matcha Roll Cake🍵</label>
-        <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" id="sponge" data-price="180" style="width: auto; display: inline-block; margin-right: 8px;"> Strawberry Flavored Macarons🍓</label>
-        <label style="font-weight: 500; margin-bottom: 0;"><input type="checkbox" id="chocolate" data-price="150" style="width: auto; display: inline-block; margin-right: 8px;"> Castella🍮</label>
+       <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" value="Japanese strawberry shortcake" style="width: auto; display: inline-block; margin-right: 8px;"> Japanese strawberry shortcake🍰</label>
+      <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" value="Daifuku" style="width: auto; display: inline-block; margin-right: 8px;"> Daifuku🍡</label>
+      <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" value="Matcha Roll Cake" style="width: auto; display: inline-block; margin-right: 8px;"> Matcha Roll Cake🍵</label>
+      <label style="font-weight: 500; margin-bottom: 8px;"><input type="checkbox" value="Strawberry Flavored Macarons" style="width: auto; display: inline-block; margin-right: 8px;"> Strawberry Flavored Macarons🍓</label>
+      <label style="font-weight: 500; margin-bottom: 0;"><input type="checkbox" value="Castella" style="width: auto; display: inline-block; margin-right: 8px;"> Castella🍮</label>
       </div>
     </div>
 
@@ -313,30 +313,37 @@
   </footer>
 
   <script>
-    function createOrder() {
-      const checkboxes = document.querySelectorAll("input[type='checkbox']");
+  const prices = {
+    "Japanese strawberry shortcake": 120,
+    "Daifuku": 150,
+    "Matcha Roll Cake": 160,
+    "Strawberry Flavored Macarons": 180,
+    "Castella": 150
+  };
 
-      let subtotal = 0;
+  function createOrder() {
+    const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
 
-      checkboxes.forEach(function (item) {
-        if (item.checked) {
-          subtotal += Number(item.dataset.price);
-        }
-      });
-
-      const vat = subtotal * 0.12;
-      const total = subtotal + vat;
-
-      const receiptHTML = `
-        <h3 style="font-family: 'Shippori Mincho', serif; font-size: 1.1rem; margin-bottom: 6px; font-weight: 700;">==== Receipt ====</h3>
-        <p>Subtotal: &#8369;${subtotal.toFixed(2)}</p>
-        <p>Tax: &#8369;${vat.toFixed(2)}</p>
-        <p style="margin-top: 4px;"><strong>Total: &#8369;${total.toFixed(2)}</strong></p>
-      `;
-
-      document.getElementById("receipt").innerHTML = receiptHTML;
+    if (checkboxes.length === 0) {
+      document.getElementById("receipt").innerHTML = "<span style='opacity: 0.75; font-weight: 500;'>Please select at least one item. ✧</span>";
+      return;
     }
-  </script>
 
+    let subtotal = 0;
+    checkboxes.forEach(cb => {
+     subtotal += prices[cb.value];
+    });
+
+    const vat = subtotal * 0.12;
+    const total = subtotal + vat;
+
+    document.getElementById("receipt").innerHTML = `
+      <h3 style="font-family: 'Shippori Mincho', serif; font-size: 1.1rem; margin-bottom: 6px; font-weight: 700;">==== Receipt ====</h3>
+      <p>Subtotal: &#8369;${subtotal.toFixed(2)}</p>
+      <p>Tax: &#8369;${vat.toFixed(2)}</p>
+      <p style="margin-top: 4px;"><strong>Total: &#8369;${total.toFixed(2)}</strong></p>
+    `;
+  }
+</script>
 </body>
 </html>

@@ -35,7 +35,6 @@
       overflow-x: hidden;
     }
 
-
     body::after {
       content: "";
       position: fixed;
@@ -287,11 +286,11 @@
 
     <div class="form-group">
       <label for="category">Category:</label>
-      <select id="category">
-        <option value="PER">Perishables</option>
-        <option value="NON">Non-Perishables</option>
-        <option value="BEV">Beverages</option>
-      </select>
+     <select id="category">
+      <option value="PE">Perishables</option>
+      <option value="NP">Non-Perishables</option>
+      <option value="BV">Beverages</option>
+     </select>
     </div>
 
     <div class="form-group">
@@ -318,22 +317,29 @@
   </footer>
 
   <script>
-    function generateSKU() {
-      const category = document.getElementById("category").value;
-      const productName = document.getElementById("productName").value.trim();
-      const stockQty = document.getElementById("stockQty").value.trim();
+  function generateSKU() {
+    const category = document.getElementById("category").value;
+    const productName = document.getElementById("productName").value.trim();
+    const stockText = document.getElementById("stockQty").value.trim();
 
-      if (productName === "" || stockQty === "") {
-        document.getElementById("result").innerHTML = "Please fill in all fields. ✧";
-        return;
-      }
-
-      const nameCode = productName.substring(0, 3).toUpperCase();
-      const sku = category + "-" + nameCode + "-" + stockQty;
-
-      document.getElementById("result").innerHTML = "Generated SKU: " + sku;
+    if (productName === "" || stockText === "") {
+      document.getElementById("result").innerHTML = "<span style='opacity: 0.75; font-weight: 500;'>Please fill in all fields. ✧</span>";
+      return;
     }
-  </script>
+
+    const stockQty = Number(stockText);
+    if (!Number.isInteger(stockQty) || stockQty < 0 || stockQty > 999) {
+      document.getElementById("result").innerHTML = "<span style='opacity: 0.75; font-weight: 500;'>Stock quantity must be a whole number from 0 to 999. ✧</span>";
+      return;
+    }
+
+    const nameCode = productName.replace(/[^a-zA-Z0-9]/g, "").substring(0, 3).toUpperCase().padEnd(3, "X");
+    const qty = String(stockQty).padStart(3, "0");
+    const sku = category + nameCode + qty;
+
+    document.getElementById("result").innerHTML = "Generated SKU: " + sku;
+  }
+</script>
 
 </body>
 </html>
